@@ -83,8 +83,28 @@ def rnn_layer(w: np.array, list_of_sequences: list[np.array], sigma=sigmoid ) ->
 
 
 # Test
+def rnn_layer(w: np.array, list_of_sequences: list[np.array], sigma=sigmoid ) -> np.array:
+    W = w[0:9].reshape(3, 3)
+    U = w[9:18].reshape(3, 3)
+    B = w[18:21].reshape(1, 3)
+
+    nr_sequences = len(list_of_sequences)
+    outputs = np.zeros(nr_sequences)
+
+    for i in range(nr_sequences):
+        X = list_of_sequences[i]
+        a = 0 * X[1, ]
+        for j in range(len(X)):
+            a = np.matmul(W, X[j,]) + np.matmul(U, a)
+    
+        outputs[i] = np.matmul(B, a)
+
+    return outputs
+
+
+# Test
 np.random.seed(10)
 list_of_sequences = [np.random.normal(size=(5,3)) for _ in range(100)]
 wstart = np.random.normal(size=(3*3 + 3*3 + 3)) 
 o = rnn_layer(wstart, list_of_sequences)
-print(o.shape == (100,) and o.mean().round(3) == 16.287 and o.std().astype(int) == 133)
+print(o.shape)

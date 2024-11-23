@@ -303,7 +303,7 @@ def rnn_layer(w: np.array, list_of_sequences: list[np.array], sigma=sigmoid ) ->
     outputs = np.zeros(nr_sequences)
 
     for i in range(nr_sequences):
-        X = list_of_sequences[[i]]
+        X = list_of_sequences[i]
         a = 0 * X[1, ]
         for j in range(len(X)):
             a = np.matmul(W, X[j,]) + np.matmul(U, a)
