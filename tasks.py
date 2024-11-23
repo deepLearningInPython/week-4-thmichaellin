@@ -97,8 +97,9 @@ print(word_frequencies)
 # -----------------------------------------------
 def token_counts(string: str, k: int = 1) -> dict:
     tokens = tokenize(string)
-    word_frequencies = {word:tokens.count(word) for word in tokens if 
-                        tokens.count(word) > k}
+    token_set = set(tokens)
+    word_frequencies = {word:tokens.count(word) for word in token_set if 
+                        tokens.count(word) >= k}
     return word_frequencies
 
 # test:
