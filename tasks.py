@@ -52,6 +52,9 @@ def tokenize(string: str) -> list:
     tokens = ''.join([token for token in string if
                       token.isalpha() is True or token == ' '])
     tokens = [token.lower() for token in tokens.split()]
+
+    # Sorting unique tokens doesn't really make sense for the later tasks
+    # return sorted(set(tokens))
     return tokens
 
 

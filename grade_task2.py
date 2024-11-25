@@ -3,8 +3,9 @@ from tasks import *
 
 # lambda string: "".join([x for x in string.lower() if x in '\n\t abcdefghijklmnopqrstuvwxyz0123456789']).split()
 
+
 class TestTokenizeFunction(unittest.TestCase):
-    
+
     def test_basic_sentence(self):
         self.assertEqual(tokenize("Hello, world!"), ["hello", "world"])
 
@@ -12,10 +13,12 @@ class TestTokenizeFunction(unittest.TestCase):
         self.assertEqual(tokenize("HeLLo WoRLd"), ["hello", "world"])
 
     def test_punctuation_removal(self):
-        self.assertEqual(tokenize("This, is a test!"), ["this", "is", "a", "test"])
+        self.assertEqual(tokenize("This, is a test!"),
+                         ["this", "is", "a", "test"])
 
     def test_extra_spaces(self):
-        self.assertEqual(tokenize("  Lots   of   spaces   "), ["lots", "of", "spaces"])
+        self.assertEqual(tokenize("  Lots   of   spaces   "),
+                         ["lots", "of", "spaces"])
 
     def test_empty_string(self):
         self.assertEqual(tokenize(""), [])
@@ -30,6 +33,8 @@ class TestTokenizeFunction(unittest.TestCase):
         self.assertEqual(tokenize("Hello @#%& world!"), ["hello", "world"])
 
     def test_newlines_and_tabs(self):
-        self.assertEqual(tokenize("Hello\nworld\tthis\tis\na test"), ["hello", "world", "this", "is", "a", "test"])
+        self.assertEqual(tokenize("Hello\nworld\tthis\tis\na test"), [
+                         "hello", "world", "this", "is", "a", "test"])
+
 
 unittest.main()
